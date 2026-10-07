@@ -3,6 +3,7 @@ import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { AOSProvider } from "@/components/AOSProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -23,6 +24,13 @@ export const metadata: Metadata = {
   description:
     "We build conversion-focused websites for construction, roofing, and real estate companies.",
   metadataBase: new URL("https://buildorab.com"),
+  openGraph: {
+    title: "Buildorab | Web Design Studio",
+    description: "We build websites that convert visitors into customers.",
+    url: "https://buildorab.com",
+    siteName: "Buildorab",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -33,6 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
       <body className="font-body bg-background text-foreground antialiased flex flex-col min-h-screen">
+        <AOSProvider />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
