@@ -1,16 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useLocale } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/routing";
 
 export function LanguageSwitcher() {
-  const [lang, setLang] = useState<"en" | "fa">("en");
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const switchLocale = (newLocale: "en" | "fa") => {
+    router.replace(pathname, { locale: newLocale });
+  };
 
   return (
     <div className="flex items-center gap-1 bg-white/60 border border-border rounded-lg p-1">
       <button
-        onClick={() => setLang("en")}
+        onClick={() => switchLocale("en")}
         className={`px-3 py-1 text-sm font-semibold rounded-md transition ${
-          lang === "en"
+          locale === "en"
             ? "bg-primary text-white"
             : "text-muted hover:text-primary"
         }`}
@@ -18,9 +25,9 @@ export function LanguageSwitcher() {
         EN
       </button>
       <button
-        onClick={() => setLang("fa")}
+        onClick={() => switchLocale("fa")}
         className={`px-3 py-1 text-sm font-semibold rounded-md transition ${
-          lang === "fa"
+          locale === "fa"
             ? "bg-primary text-white"
             : "text-muted hover:text-primary"
         }`}
