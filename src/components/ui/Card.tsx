@@ -1,0 +1,16 @@
+import { ReactNode } from "react";
+
+interface CardProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function Card({ children, className = "" }: CardProps) {
+  return (
+    <div
+      className={`bg-white rounded-xl p-6 shadow-soft hover:shadow-medium transition-shadow duration-300 ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
