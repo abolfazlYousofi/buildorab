@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Poppins, Inter, Vazirmatn } from "next/font/google";
+import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -16,25 +18,11 @@ const inter = Inter({
   display: "swap",
 });
 
-const vazirmatn = Vazirmatn({
-  subsets: ["arabic"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-vazirmatn",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: "Buildorab | Web Design for Construction & Roofing",
   description:
     "We build conversion-focused websites for construction, roofing, and real estate companies.",
   metadataBase: new URL("https://buildorab.com"),
-  openGraph: {
-    title: "Buildorab | Web Design Studio",
-    description: "We build websites that convert visitors into customers.",
-    url: "https://buildorab.com",
-    siteName: "Buildorab",
-    type: "website",
-  },
 };
 
 export default function RootLayout({
@@ -43,12 +31,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${poppins.variable} ${inter.variable} ${vazirmatn.variable}`}
-    >
-      <body className="font-body bg-background text-foreground antialiased">
-        {children}
+    <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
+      <body className="font-body bg-background text-foreground antialiased flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
