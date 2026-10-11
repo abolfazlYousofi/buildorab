@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 
 const reasons = [
@@ -20,19 +23,19 @@ const reasons = [
 ];
 
 export function WhyUs() {
+  const t = useTranslations("WhyUs");
+
   return (
     <section className="section-padding bg-primary text-white">
       <Container>
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-accent font-semibold text-sm uppercase tracking-wider">
-            Why Buildorab
+            {t("badge")}
           </span>
           <h2 className="text-3xl md:text-5xl font-heading font-bold mt-2 mb-4">
-            What Sets Us Apart
+            {t("title")}
           </h2>
-          <p className="text-gray-300 text-lg">
-            We don&apos;t just build websites. We build sales engines.
-          </p>
+          <p className="text-gray-300 text-lg">{t("subtitle")}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

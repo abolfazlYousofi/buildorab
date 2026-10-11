@@ -1,17 +1,22 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { testimonials } from "@/data/testimonials";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 
 export function Testimonials() {
+  const t = useTranslations("Testimonials");
+
   return (
     <section className="section-padding bg-background">
       <Container>
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-accent font-semibold text-sm uppercase tracking-wider">
-            Testimonials
+            {t("badge")}
           </span>
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-primary mt-2 mb-4">
-            What Clients Say
+            {t("title")}
           </h2>
         </div>
 
