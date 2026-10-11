@@ -25,8 +25,9 @@ const config: Config = {
         border: "#E2E8F0",
       },
       fontFamily: {
-        heading: ["var(--font-poppins)", "sans-serif"],
-        body: ["var(--font-inter)", "sans-serif"],
+      heading: ["Poppins", "sans-serif"],
+      body: ["Inter", "sans-serif"],
+      persian: ["Vazirmatn", "sans-serif"],
       },
       boxShadow: {
         soft: "0 4px 20px rgba(0, 0, 0, 0.06)",
