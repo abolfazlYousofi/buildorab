@@ -3,27 +3,27 @@
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 
-const reasons = [
-  {
-    title: "Fast Delivery",
-    description: "Every project delivered within 10 business days.",
-  },
-  {
-    title: "SEO Built-In",
-    description: "Search-engine-optimized from the ground up.",
-  },
-  {
-    title: "Conversion-Focused",
-    description: "Designed to turn visitors into paying customers.",
-  },
-  {
-    title: "3-Month Support",
-    description: "Free support and maintenance after launch.",
-  },
-];
-
 export function WhyUs() {
   const t = useTranslations("WhyUs");
+
+  const reasons = [
+    {
+      title: t("reasons.delivery"),
+      description: t("reasons.deliveryDesc"),
+    },
+    {
+      title: t("reasons.seo"),
+      description: t("reasons.seoDesc"),
+    },
+    {
+      title: t("reasons.conversion"),
+      description: t("reasons.conversionDesc"),
+    },
+    {
+      title: t("reasons.support"),
+      description: t("reasons.supportDesc"),
+    },
+  ];
 
   return (
     <section className="section-padding bg-primary text-white">

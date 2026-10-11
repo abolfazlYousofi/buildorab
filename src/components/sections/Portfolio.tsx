@@ -1,12 +1,13 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { projects } from "@/data/projects";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
 export function Portfolio() {
   const t = useTranslations("Portfolio");
+  const locale = useLocale() as "en" | "fa";
 
   return (
     <section className="section-padding bg-white">
@@ -32,17 +33,19 @@ export function Portfolio() {
             >
               <div className="aspect-video bg-linear-to-br from-primary to-primary-light flex items-center justify-center">
                 <span className="text-white/30 font-heading font-bold text-2xl">
-                  {project.title}
+                  {project.title[locale]}
                 </span>
               </div>
               <div className="p-6">
                 <p className="text-accent text-sm font-semibold mb-1">
-                  {project.industry}
+                  {project.industry[locale]}
                 </p>
                 <h3 className="text-xl font-heading font-bold text-primary mb-2 group-hover:text-accent transition">
-                  {project.title}
+                  {project.title[locale]}
                 </h3>
-                <p className="text-muted text-sm">{project.description}</p>
+                <p className="text-muted text-sm">
+                  {project.description[locale]}
+                </p>
               </div>
             </a>
           ))}

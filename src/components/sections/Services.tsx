@@ -1,12 +1,13 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { services } from "@/data/services";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 
 export function Services() {
   const t = useTranslations("Services");
+  const locale = useLocale() as "en" | "fa";
 
   return (
     <section className="section-padding bg-background">
@@ -25,11 +26,13 @@ export function Services() {
           {services.map((service) => (
             <Card key={service.id} className="flex flex-col">
               <h3 className="text-xl font-heading font-bold text-primary mb-3">
-                {service.title}
+                {service.title[locale]}
               </h3>
-              <p className="text-muted mb-4 flex-1">{service.description}</p>
+              <p className="text-muted mb-4 flex-1">
+                {service.description[locale]}
+              </p>
               <ul className="space-y-2 text-sm text-muted">
-                {service.features.map((feature, i) => (
+                {service.features[locale].map((feature, i) => (
                   <li key={i} className="flex items-center gap-2">
                     <span className="text-accent">✓</span>
                     {feature}

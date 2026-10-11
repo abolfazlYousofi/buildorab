@@ -1,12 +1,13 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { testimonials } from "@/data/testimonials";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 
 export function Testimonials() {
   const t = useTranslations("Testimonials");
+  const locale = useLocale() as "en" | "fa";
 
   return (
     <section className="section-padding bg-background">
@@ -21,19 +22,21 @@ export function Testimonials() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((t) => (
-            <Card key={t.id}>
+          {testimonials.map((item) => (
+            <Card key={item.id}>
               <div className="flex gap-1 text-accent mb-4">
-                {Array.from({ length: t.rating }).map((_, i) => (
+                {Array.from({ length: item.rating }).map((_, i) => (
                   <span key={i}>★</span>
                 ))}
               </div>
               <p className="text-foreground mb-6 italic">
-                &ldquo;{t.text}&rdquo;
+                &ldquo;{item.text[locale]}&rdquo;
               </p>
               <div>
-                <p className="font-heading font-bold text-primary">{t.name}</p>
-                <p className="text-sm text-muted">{t.company}</p>
+                <p className="font-heading font-bold text-primary">
+                  {item.name}
+                </p>
+                <p className="text-sm text-muted">{item.company[locale]}</p>
               </div>
             </Card>
           ))}
