@@ -1,49 +1,64 @@
-import Link from "next/link";
-
-const quickLinks = [
-  { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 export function Footer() {
+  const t = useTranslations("Footer");
+  const tNav = useTranslations("Nav");
+
   return (
     <footer className="bg-primary text-white py-16 mt-20">
       <div className="container-custom grid grid-cols-1 md:grid-cols-3 gap-12">
-        {/* Brand */}
         <div>
           <h3 className="font-heading text-2xl font-bold mb-4">Buildorab</h3>
-          <p className="text-gray-300 leading-relaxed">
-            Conversion-focused websites for construction, roofing, and real
-            estate companies.
-          </p>
+          <p className="text-gray-300 leading-relaxed">{t("tagline")}</p>
         </div>
 
-        {/* Quick Links */}
         <div>
           <h4 className="font-heading text-lg font-semibold mb-4">
-            Quick Links
+            {t("quickLinks")}
           </h4>
           <ul className="space-y-3">
-            {quickLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-gray-300 hover:text-accent transition-colors"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link
+                href="/services"
+                className="text-gray-300 hover:text-accent transition-colors"
+              >
+                {tNav("services")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/portfolio"
+                className="text-gray-300 hover:text-accent transition-colors"
+              >
+                {tNav("portfolio")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/about"
+                className="text-gray-300 hover:text-accent transition-colors"
+              >
+                {tNav("about")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact"
+                className="text-gray-300 hover:text-accent transition-colors"
+              >
+                {tNav("contact")}
+              </Link>
+            </li>
           </ul>
         </div>
 
-        {/* Contact */}
         <div>
-          <h4 className="font-heading text-lg font-semibold mb-4">Contact</h4>
+          <h4 className="font-heading text-lg font-semibold mb-4">
+            {t("contact")}
+          </h4>
           <ul className="space-y-3 text-gray-300">
-            <li>abolfazlyousofi83@gmail.com</li>
+            <li>abolfazlyousufi83@gmail.com</li>
             <li>+98 913 087 8900</li>
             <li>Isfahan, Iran</li>
           </ul>
@@ -51,7 +66,7 @@ export function Footer() {
       </div>
 
       <div className="container-custom mt-12 pt-6 border-t border-white/10 text-center text-gray-400 text-sm">
-        © {new Date().getFullYear()} Buildorab. All rights reserved.
+        © {new Date().getFullYear()} Buildorab. {t("rights")}
       </div>
     </footer>
   );
