@@ -12,9 +12,11 @@
     "@fontsource/inter": "^5.3.0",
     "@fontsource/poppins": "^5.3.0",
     "@fontsource/vazirmatn": "^5.3.0",
+    "@prisma/client": "^6.19.3",
     "aos": "^2.3.4",
     "next": "16.3.8",
     "next-intl": "^4.14.9",
+    "nodemailer": "^10.1.0",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
@@ -22,10 +24,13 @@
     "@tailwindcss/postcss": "^4",
     "@types/aos": "^3.0.8",
     "@types/node": "^20",
+    "@types/nodemailer": "^8.0.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^18.0.7",
     "eslint": "^9",
     "eslint-config-next": "16.3.8",
+    "prisma": "^6.19.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
