@@ -1,7 +1,19 @@
 import { PrismaClient } from "@prisma/client";
+import { PrismaLibSql } from "@prisma/adapter-libsql";
 import bcrypt from "bcryptjs";
 
-const prisma = new PrismaClient();
+let prisma: PrismaClient;
+const isTurso = process.env.TURSO_DATABASE_URL && process.env.TURSO_DATABASE_URL.startsWith("libsql://");
+
+if (isTurso) {
+  const adapter = new PrismaLibSql({
+    url: process.env.TURSO_DATABASE_URL!,
+    authToken: process.env.TURSO_AUTH_TOKEN!,
+  });
+  prisma = new PrismaClient({ adapter });
+} else {
+  prisma = new PrismaClient();
+}
 
 async function main() {
   const email = "abolfazlyousufi83@gmail.com";
@@ -10,7 +22,7 @@ async function main() {
 
   const existing = await prisma.user.findUnique({ where: { email } });
   if (existing) {
-    console.log("✓ Admin user already exists");
+    console.log("✓ Admin user already exists in this database");
     return;
   }
 
@@ -25,9 +37,8 @@ async function main() {
     },
   });
 
-  console.log("✓ Admin user created:", user.email);
+  console.log("✓ Admin user created in Turso:", user.email);
   console.log("  Password:", password);
-  console.log("  ⚠️  Change the password after first login!");
 }
 
 main()
