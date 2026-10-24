@@ -1,8 +1,9 @@
 {
-  "Nav": {
+    "Nav": {
     "home": "Home",
     "services": "Services",
     "portfolio": "Portfolio",
+    "blog": "Blog", 
     "about": "About",
     "contact": "Contact",
     "cta": "Free Consultation"
@@ -104,5 +105,15 @@
     "title": "Page Not Found",
     "subtitle": "The page you're looking for doesn't exist.",
     "cta": "Back to Home"
+  },
+  "Blog": {
+    "badge": "Blog",
+    "title": "Latest Insights",
+    "subtitle": "Thoughts, tutorials, and industry news.",
+    "readMore": "Read More",
+    "backToBlog": "← Back to Blog",
+    "noPosts": "No articles published yet."
   }
+
+  
 }

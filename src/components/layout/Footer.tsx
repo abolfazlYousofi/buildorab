@@ -50,6 +50,11 @@ export function Footer() {
                 {tNav("contact")}
               </Link>
             </li>
+            <li>
+              <Link href="/blog" className="text-gray-300 hover:text-accent transition-colors">
+                {tNav("blog")}
+              </Link>
+            </li>
           </ul>
         </div>
 
